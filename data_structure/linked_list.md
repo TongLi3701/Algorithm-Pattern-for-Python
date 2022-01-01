@@ -62,8 +62,47 @@ class Solution:
 
 ### [remove-duplicates-from-sorted-list-ii](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
 
-> 给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中   没有重复出现的数字。
+> 给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中没有重复出现的数字。
 
+
+方法1: 递归
+链表和树的问题, 一般都可以利用递归和迭代两种写法.
+
+1.1 递归函数的定义:
+本题目中直接使用`deleteDuplicates(head)`, 用于删除以`head`作为开头的有序链表中, 值出现重复的节点
+
+1.2 递归终止条件:
+* `head` 为空, 直接返回head
+* `head.next` 为空, 那么说明链表中只有一个节点, 也没有出现重复的节点, 直接返回`head`
+
+1.3 递归调用:
+* 若`head.val != head.next.val`, 说明头结点不等于下一个节点的值, 所以当前`head`节点必须保留; 接下来我们需要对`head.next`进行递归, `head.next = self.deleteDuplicates(head.next)`
+* 如果`head.val == head.next.val`, 说明头结点等于下一个节点的值, 那么当前头结点则必须要删除. 需要用`move` 指针一直向后遍历寻找与`head.val`不等的节点. 此时`move` 之前的节点都不保留了, 因此返回`deleteDuplicates(move)`;
+
+1.4 
+题目让我们返回删除了值重复的节点后剩余的链表，结合上面两种递归调用的情况。
+
+如果 `head.val != head.next.val`, 头结点需要保留，因此返回的是 `head`;
+如果 `head.val == head.next.val`, 头结点需要删除，需要返回的是`deleteDuplicates(move)`;
+
+```Python
+class Solution(object):
+    def deleteDuplicates(self, head):
+        if not head or not head.next:
+            return head
+        if head.val != head.next.val:
+            head.next = self.deleteDuplicates(head.next)
+        else:
+            move = head.next
+            while move and head.val == move.val:
+                move = move.next
+            return self.deleteDuplicates(move)
+        return head
+```
+
+
+
+方法2:
 - 思路：链表头结点可能被删除，所以用 dummy node 辅助删除
 
 ```Python
