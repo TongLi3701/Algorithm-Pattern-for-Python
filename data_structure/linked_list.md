@@ -37,6 +37,29 @@ class Solution:
         return head
 ```
 
+另外, 可以使用双指针, 更加好理解一些:
+```Python
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+        if not head: return head
+        
+        pre, cur = head, head.next
+        
+        while cur:
+            if pre.val == cur.val:
+                pre.next = cur.next
+            else:
+                pre = pre.next
+            
+            cur = cur.next
+        
+        return head
+```
+
+时间复杂度: O(n)
+
+空间复杂度: O(1)
+
 ### [remove-duplicates-from-sorted-list-ii](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
 
 > 给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中   没有重复出现的数字。
