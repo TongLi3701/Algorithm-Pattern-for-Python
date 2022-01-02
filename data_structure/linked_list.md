@@ -145,7 +145,7 @@ class Solution:
 
 - 思路：将当前结点放置到头结点
 
-方法1: 利用stack保存value
+方法1: 利用stack的特性可以直接反转链表的value, 但是会占用多余的空间
 ```Python
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
@@ -165,7 +165,7 @@ class Solution:
         return dummy.next
 ```
 
-方法2: 
+方法2: 利用双指针, `pre` and `cur`, 注意要先保存`cur.next` 防止后面元素的丢失.
 ```Python
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
