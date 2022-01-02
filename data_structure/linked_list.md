@@ -187,11 +187,11 @@ class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
     	if not head or not head.next: return head
         
-        rev_next = self.reverseList(head.next)
+        last = self.reverseList(head.next)
         head.next.next = head
         head.next = None
         
-        return rev_next
+        return last
 ```
 
 ### [reverse-linked-list-ii](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
