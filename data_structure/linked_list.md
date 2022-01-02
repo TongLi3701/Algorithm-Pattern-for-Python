@@ -102,7 +102,7 @@ class Solution(object):
 
 
 
-方法2:
+<!-- 方法2:
 - 思路：链表头结点可能被删除，所以用 dummy node 辅助删除
 
 ```Python
@@ -137,7 +137,7 @@ class Solution:
 注意点
 • A->B->C 删除 B，A.next = C
 • 删除用一个 Dummy Node 节点辅助（允许头节点可变）
-• 访问 X.next 、X.value 一定要保证 X != nil
+• 访问 X.next 、X.value 一定要保证 X != nil -->
 
 ### [reverse-linked-list](https://leetcode-cn.com/problems/reverse-linked-list/)
 
