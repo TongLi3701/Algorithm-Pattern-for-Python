@@ -169,17 +169,15 @@ class Solution:
 ```Python
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        if not head: return head
+        pre, cur = None, head
         
-        tail = head
-        while tail.next is not None:
-            # put tail.next to head  
-            tmp = tail.next
-            tail.next = tail.next.next
-            tmp.next = head
-            head = tmp
+        while cur:
+            temp = cur.next
+            cur.next = pre
+            pre = cur
+            cur = temp
         
-        return head
+        return pre
 ```
 方法3: recursion
 ```Python
