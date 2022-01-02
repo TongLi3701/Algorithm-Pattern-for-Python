@@ -100,45 +100,6 @@ class Solution(object):
         return head
 ```
 
-
-
-<!-- 方法2:
-- 思路：链表头结点可能被删除，所以用 dummy node 辅助删除
-
-```Python
-class Solution:
-    def deleteDuplicates(self, head: ListNode) -> ListNode:
-        
-        if head is None:
-            return head
-        
-        dummy = ListNode(next=head)
-        
-        current, peek = dummy, head
-        find_dup = False
-        while peek.next is not None:
-            if peek.next.val == peek.val:
-                find_dup = True
-                peek.next = peek.next.next
-            else:
-                if find_dup:
-                    find_dup = False
-                    current.next = current.next.next
-                else:
-                    current = current.next
-                peek = peek.next
-        
-        if find_dup:
-            current.next = current.next.next
-        
-        return dummy.next
-```
-
-注意点
-• A->B->C 删除 B，A.next = C
-• 删除用一个 Dummy Node 节点辅助（允许头节点可变）
-• 访问 X.next 、X.value 一定要保证 X != nil -->
-
 ### [reverse-linked-list](https://leetcode-cn.com/problems/reverse-linked-list/)
 
 > 反转一个单链表。
