@@ -145,12 +145,31 @@ class Solution:
 
 - 思路：将当前结点放置到头结点
 
+方法1: 利用stack保存value
 ```Python
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
+        stack = []
         
-        if head is None:
-            return head
+        while head:
+            stack.append(head.val)
+            head = head.next
+        
+        dummy = ListNode(-1)
+        a = dummy
+        while stack:
+            val = stack.pop()
+            a.next = ListNode(val)
+            a = a.next
+        
+        return dummy.next
+```
+
+方法2: 
+```Python
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        if not head: return head
         
         tail = head
         while tail.next is not None:
@@ -162,13 +181,11 @@ class Solution:
         
         return head
 ```
-- Recursive method is tricky
+方法3: recursion
 ```Python
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        
-        if head is None or head.next is None:
-            return head
+    	if not head or not head.next: return head
         
         rev_next = self.reverseList(head.next)
         head.next.next = head
