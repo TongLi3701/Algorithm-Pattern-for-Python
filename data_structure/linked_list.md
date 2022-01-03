@@ -159,28 +159,40 @@ class Solution:
 
 - 思路：先找到 m 处, 再反转 n - m 次即可
 
+注意: 
+1. 通常情况下, 我们需要先定义一个dummy head, 然后让dummy head指向haed
+
+
+方法1: 头插法, 将后面的元素一个一个往前插入
+步骤:
+ - 首先定义2个指针, 分别称为 pre 和 cur
+ - 根据 left 和 right 来确定 pre 和 cur 的位置
+ - 将 pre 移动到第一个要翻转的节点前面, 将 cur 移动到第一个要翻转的节点的位置上, 以 m=2, n=4 为例
+ - 将 cur 后面的元素删除, 然后添加到 pre 的后面
+ - 然后不断重复
+
 ```Python
 class Solution:
-    def reverseBetween(self, head: ListNode, m: int, n: int) -> ListNode:
+    def reverseBetween(self, head: ListNode, left: int, right: int) -> ListNode:
+        dummy = ListNode(0)
+        dummy.next = head
         
-        if head is None:
-            return head
+        pre = dummy
+        cur = head
         
-        n -= m # number of times of reverse
+        for i in range(left - 1):
+            pre = pre.next
+            cur = cur.next
         
-        curr = dummy = ListNode(next=head)
-        while m > 1: # find node at m - 1
-            curr = curr.next
-            m -= 1
+        for i in range(right - left):
+            removed = cur.next
+            cur.next = cur.next.next # delete the removed node
+            
+            removed.next = pre.next
+            pre.next = removed
         
-        start = curr.next
-        while n > 0: # reverse n - m times
-            tmp = start.next
-            start.next = tmp.next
-            tmp.next = curr.next
-            curr.next = tmp
-            n -= 1
         return dummy.next
+
 ```
 
 ### [merge-two-sorted-lists](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
