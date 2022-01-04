@@ -194,6 +194,38 @@ class Solution:
         return dummy.next
 
 ```
+在链表中, remove node 的操作就是 next.next, 这样可以直接跳过一个 node, 但是在remove之前,一定要先把这个node记录下来,以防丢失
+
+
+```Python
+class Solution:
+    def reverseBetween(self, head: ListNode, left: int, right: int) -> ListNode:
+        stack = []
+        dummy = ListNode(0)
+        dummy.next = head
+        
+        cur = dummy
+        
+        for i in range(left - 1):
+            cur = cur.next
+        
+        pre = cur
+        cur = cur.next
+        
+        for i in range(right - left + 1):
+            stack.append(cur.val)
+            cur = cur.next
+        
+        while stack:
+            pre.next = ListNode(stack.pop())
+            pre = pre.next
+        
+        pre.next = cur
+        
+        return dummy.next
+```
+利用stack来实现中间部分内容的翻转, 一定要注意cur到底到了哪里, 以及index的变化.
+
 
 ### [merge-two-sorted-lists](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
 
@@ -222,6 +254,7 @@ class Solution:
 
         return dummy.next
 ```
+
 
 ### [partition-list](https://leetcode-cn.com/problems/partition-list/)
 
