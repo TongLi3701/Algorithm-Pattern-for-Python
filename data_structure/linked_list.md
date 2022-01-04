@@ -231,7 +231,7 @@ class Solution:
 
 > 将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
 
-- 思路：通过 dummy node 链表，连接各个元素
+方法1: 利用双指针, 遍历两个list
 
 ```Python
 class Solution:
@@ -253,6 +253,20 @@ class Solution:
             tail.next = l1
 
         return dummy.next
+```
+
+方法2: recursion
+```Python
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        if not l1: return l2  # 终止条件，直到两个链表都空
+        if not l2: return l1
+        if l1.val <= l2.val:  # 递归调用
+            l1.next = self.mergeTwoLists(l1.next,l2)
+            return l1
+        else:
+            l2.next = self.mergeTwoLists(l1,l2.next)
+            return l2
 ```
 
 
