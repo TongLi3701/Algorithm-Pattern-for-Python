@@ -573,11 +573,11 @@ class Solution:
 
 ## 练习
 
-- [ ] [remove-duplicates-from-sorted-list](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
-- [ ] [remove-duplicates-from-sorted-list-ii](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
-- [ ] [reverse-linked-list](https://leetcode-cn.com/problems/reverse-linked-list/)
-- [ ] [reverse-linked-list-ii](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
-- [ ] [merge-two-sorted-lists](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
+- [x] [remove-duplicates-from-sorted-list](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
+- [x] [remove-duplicates-from-sorted-list-ii](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
+- [x] [reverse-linked-list](https://leetcode-cn.com/problems/reverse-linked-list/)
+- [x] [reverse-linked-list-ii](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
+- [x] [merge-two-sorted-lists](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
 - [ ] [partition-list](https://leetcode-cn.com/problems/partition-list/)
 - [ ] [sort-list](https://leetcode-cn.com/problems/sort-list/)
 - [ ] [reorder-list](https://leetcode-cn.com/problems/reorder-list/)
