@@ -578,7 +578,7 @@ class Solution:
 - [x] [reverse-linked-list](https://leetcode-cn.com/problems/reverse-linked-list/)
 - [x] [reverse-linked-list-ii](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
 - [x] [merge-two-sorted-lists](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
-- [ ] [partition-list](https://leetcode-cn.com/problems/partition-list/)
+- [x] [partition-list](https://leetcode-cn.com/problems/partition-list/)
 - [ ] [sort-list](https://leetcode-cn.com/problems/sort-list/)
 - [ ] [reorder-list](https://leetcode-cn.com/problems/reorder-list/)
 - [ ] [linked-list-cycle](https://leetcode-cn.com/problems/linked-list-cycle/)
