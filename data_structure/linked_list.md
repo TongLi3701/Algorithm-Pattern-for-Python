@@ -274,27 +274,27 @@ class Solution:
 
 > 给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于  *x*  的节点都在大于或等于  *x*  的节点之前。
 
-- 思路：将大于 x 的节点，放到另外一个链表，最后连接这两个链表
+- 思路：将大于等于 x 的 node 构建一个新的 list, 将小于 x 的 node 构建一个 list,然后将两者拼接起来
 
-```go
+```Python
 class Solution:
     def partition(self, head: ListNode, x: int) -> ListNode:
+        before_head, after_head = ListNode(), ListNode()
+        before, after = before_head, after_head
         
-        p = l = ListNode()
-        q = s = ListNode(next=head)
-        
-        while q.next is not None:
-            if q.next.val < x:
-                q = q.next
+        while head:
+            if head.val < x:
+                before.next = ListNode(head.val)
+                before = before.next
+                head = head.next
             else:
-                p.next = q.next
-                q.next = q.next.next
-                p = p.next
+                after.next = ListNode(head.val)
+                after = after.next
+                head = head.next
         
-        p.next = None
-        q.next = l.next
+        before.next = after_head.next
         
-	return s.next
+        return before_head.next
 ```
 
 哑巴节点使用场景
