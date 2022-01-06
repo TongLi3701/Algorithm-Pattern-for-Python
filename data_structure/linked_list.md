@@ -305,7 +305,29 @@ class Solution:
 
 > 在  *O*(*n* log *n*) 时间复杂度和常数级空间复杂度下，对链表进行排序。
 
-- 思路：归并排序，slow-fast找中点
+
+1. 方法1: 先保存节点的value, 然后排序, 最后从新生成链表
+```Python
+class Solution:
+    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head: return head
+        dummy = ListNode(head.val)
+
+        node_list = []
+        while head:
+            node_list.append(head.val)
+            head = head.next
+        
+        node_list = sorted(node_list)
+        cur = dummy
+        for val in node_list:
+            cur.next = ListNode(val)
+            cur = cur.next
+        
+        return dummy.next
+```
+
+方法2: 归并排序，slow-fast找中点
 
 ```Python
 class Solution:
