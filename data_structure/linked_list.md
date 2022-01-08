@@ -349,7 +349,10 @@ class Solution:
         h.next = left if left else right
         return res.next
 ```
-
+注意点: 
+1. slow fast 指针一定位置是否正确
+2. 找到中间的时候一定要断开
+3. 记得保存头结点
 
 ### [reorder-list](https://leetcode-cn.com/problems/reorder-list/)
 
