@@ -579,7 +579,7 @@ class Solution:
 - [x] [reverse-linked-list-ii](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
 - [x] [merge-two-sorted-lists](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
 - [x] [partition-list](https://leetcode-cn.com/problems/partition-list/)
-- [ ] [sort-list](https://leetcode-cn.com/problems/sort-list/)
+- [x] [sort-list](https://leetcode-cn.com/problems/sort-list/)
 - [ ] [reorder-list](https://leetcode-cn.com/problems/reorder-list/)
 - [ ] [linked-list-cycle](https://leetcode-cn.com/problems/linked-list-cycle/)
 - [ ] [linked-list-cycle-ii](https://leetcode-cn.com/problems/https://leetcode-cn.com/problems/linked-list-cycle-ii/)
