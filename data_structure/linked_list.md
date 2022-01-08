@@ -327,54 +327,29 @@ class Solution:
         return dummy.next
 ```
 
-方法2: 归并排序，slow-fast找中点
+方法2: 归并排序，利用快慢指针找到链表的中点
 
 ```Python
 class Solution:
-    
-    def _merge(self, l1, l2):
-        tail = l_merge = ListNode()
-        
-        while l1 is not None and l2 is not None:
-            if l1.val > l2.val:
-                tail.next = l2
-                l2 = l2.next
-            else:
-                tail.next = l1
-                l1 = l1.next
-            tail = tail.next
-
-        if l1 is not None:
-            tail.next = l1
-        else:
-            tail.next = l2
-        
-        return l_merge.next
-    
-    def _findmid(self, head):
-        slow, fast = head, head.next
-        while fast is not None and fast.next is not None:
-            fast = fast.next.next
-            slow = slow.next
-        
-        return slow
-    
     def sortList(self, head: ListNode) -> ListNode:
-        if head is None or head.next is None:
-            return head
-        
-        mid = self._findmid(head)
-        tail = mid.next
-        mid.next = None # break from middle
-        
-        return self._merge(self.sortList(head), self.sortList(tail))
+        if not head or not head.next: return head # termination.
+        # cut the LinkedList at the mid index.
+        slow, fast = head, head.next
+        while fast and fast.next:
+            fast, slow = fast.next.next, slow.next
+        mid, slow.next = slow.next, None # save and cut.
+        # recursive for cutting.
+        left, right = self.sortList(head), self.sortList(mid)
+        # merge `left` and `right` linked list and return it.
+        h = res = ListNode(0)
+        while left and right:
+            if left.val < right.val: h.next, left = left, left.next
+            else: h.next, right = right, right.next
+            h = h.next
+        h.next = left if left else right
+        return res.next
 ```
 
-注意点
-
-- 快慢指针 判断 fast 及 fast.Next 是否为 nil 值
-- 递归 mergeSort 需要断开中间节点
-- 递归返回条件为 head 为 nil 或者 head.Next 为 nil
 
 ### [reorder-list](https://leetcode-cn.com/problems/reorder-list/)
 
