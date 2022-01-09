@@ -31,6 +31,9 @@ class Solution:
 - 循环时，i 不需要到 len-1
 - 如果找到目标字符串，len(needle) == j
 
+另外, KMP 算法的解答也应该了解, 作为经典算法都应该了熟于心
+
+
 ### [示例 2：subsets](https://leetcode-cn.com/problems/subsets/)
 
 > 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。
@@ -92,5 +95,5 @@ class Solution:
 
 ## 练习
 
-- [ ] [strStr](https://leetcode-cn.com/problems/implement-strstr/)
+- [x] [strStr](https://leetcode-cn.com/problems/implement-strstr/)
 - [ ] [subsets](https://leetcode-cn.com/problems/subsets/)
