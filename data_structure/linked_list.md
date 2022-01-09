@@ -596,6 +596,40 @@ class Solution:
 - 合并两个链表
 - 找到链表的中间节点
 
+
+双指针在不同情况的处理时, 需求不同:
+方式1:
+```Python
+def middleNode(self, head: ListNode) -> ListNode:
+    slow, fast = head, head 
+        
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next 
+       
+    return slow
+```
+[1, 2, 3, 4, 5]
+first = [1, 2]
+second = [3, 4, 5]
+
+方式2:
+```
+def middleNode(self, head: ListNode) -> ListNode:
+    slow, fast = head, head.next
+        
+    while fast and fast.next:
+        slow = slow.next
+         fast = fast.next.next 
+        
+     return slow.next
+```
+[1, 2, 3, 4, 5]
+first = [1, 2, 3]
+second = [4, 5]
+
+注意看清题目到底是什么需求
+
 ## 练习
 
 - [x] [remove-duplicates-from-sorted-list](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
