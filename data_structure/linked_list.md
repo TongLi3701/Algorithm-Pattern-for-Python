@@ -400,6 +400,31 @@ class Solution:
         return
 ```
 
+方法2: 利用线性表, 存储该链表的值, 然后利用线性表下标访问的特点, 直接按照顺序访问指点链表, 重建该链表, 但是缺点是比较占用空间. 空间复杂度是该链表的节点数.
+```Python
+class Solution:
+    def reorderList(self, head: ListNode) -> None:
+        if not head:
+            return
+        
+        vec = list()
+        node = head
+        while node:
+            vec.append(node)
+            node = node.next
+        
+        i, j = 0, len(vec) - 1
+        while i < j:
+            vec[i].next = vec[j]
+            i += 1
+            if i == j:
+                break
+            vec[j].next = vec[i]
+            j -= 1
+        
+        vec[i].next = None
+```
+
 ### [linked-list-cycle](https://leetcode-cn.com/problems/linked-list-cycle/)
 
 > 给定一个链表，判断链表中是否有环。
