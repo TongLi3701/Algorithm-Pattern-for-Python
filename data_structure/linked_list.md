@@ -434,7 +434,6 @@ class Solution:
 
 - 思路1：Hash Table 记录所有结点判断重复，空间复杂度 O(n) 非最优，时间复杂度 O(n) 但必然需要 n 次循环
 - 思路2：快慢指针，快慢指针相同则有环，证明：如果有环每走一步快慢指针距离会减 1，空间复杂度 O(1) 最优，时间复杂度 O(n) 但循环次数小于等于 n
-  ![fast_slow_linked_list](https://img.fuiboom.com/img/fast_slow_linked_list.png)
 
 ```Python
 class Solution:
@@ -642,8 +641,8 @@ second = [4, 5]
 - [x] [merge-two-sorted-lists](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
 - [x] [partition-list](https://leetcode-cn.com/problems/partition-list/)
 - [x] [sort-list](https://leetcode-cn.com/problems/sort-list/)
-- [ ] [reorder-list](https://leetcode-cn.com/problems/reorder-list/)
-- [ ] [linked-list-cycle](https://leetcode-cn.com/problems/linked-list-cycle/)
+- [x] [reorder-list](https://leetcode-cn.com/problems/reorder-list/)
+- [x] [linked-list-cycle](https://leetcode-cn.com/problems/linked-list-cycle/)
 - [ ] [linked-list-cycle-ii](https://leetcode-cn.com/problems/https://leetcode-cn.com/problems/linked-list-cycle-ii/)
 - [ ] [palindrome-linked-list](https://leetcode-cn.com/problems/palindrome-linked-list/)
 - [ ] [copy-list-with-random-pointer](https://leetcode-cn.com/problems/copy-list-with-random-pointer/)
