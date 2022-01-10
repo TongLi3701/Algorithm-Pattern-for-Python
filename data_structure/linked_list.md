@@ -456,7 +456,15 @@ class Solution:
 
 - 思路：快慢指针，快慢相遇之后，慢指针回到头，快慢指针步调一致一起移动，相遇点即为入环点。
 
-![cycled_linked_list](https://img.fuiboom.com/img/cycled_linked_list.png)
+<!-- ![cycled_linked_list](https://img.fuiboom.com/img/cycled_linked_list.png) -->
+
+![image](https://user-images.githubusercontent.com/52250342/148849412-d602dc4f-5164-4163-bf61-2b81672a310b.png)
+
+* slow * 2 = fast
+* slow = a + b
+* fast = a + b + c + b = a + 2*b + c
+* (a + b)*2 = a + 2*b + c
+* a = c
 
 ```Python
 class Solution:
@@ -643,6 +651,6 @@ second = [4, 5]
 - [x] [sort-list](https://leetcode-cn.com/problems/sort-list/)
 - [x] [reorder-list](https://leetcode-cn.com/problems/reorder-list/)
 - [x] [linked-list-cycle](https://leetcode-cn.com/problems/linked-list-cycle/)
-- [ ] [linked-list-cycle-ii](https://leetcode-cn.com/problems/https://leetcode-cn.com/problems/linked-list-cycle-ii/)
+- [x] [linked-list-cycle-ii](https://leetcode-cn.com/problems/https://leetcode-cn.com/problems/linked-list-cycle-ii/)
 - [ ] [palindrome-linked-list](https://leetcode-cn.com/problems/palindrome-linked-list/)
 - [ ] [copy-list-with-random-pointer](https://leetcode-cn.com/problems/copy-list-with-random-pointer/)
