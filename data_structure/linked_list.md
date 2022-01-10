@@ -630,7 +630,7 @@ def middleNode(self, head: ListNode) -> ListNode:
         
     while fast and fast.next:
         slow = slow.next
-         fast = fast.next.next 
+        fast = fast.next.next 
         
      return slow.next
 ```
