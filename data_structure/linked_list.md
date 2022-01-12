@@ -501,6 +501,29 @@ class Solution:
 
 > 请判断一个链表是否为回文链表。
 
+方法1:
+储存列表的值, 然后进行比较
+
+```Python
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        cur = head
+        s = []
+        while cur:
+            s.append(cur.val)
+            cur = cur.next 
+        
+        for i in range(len(s) // 2):
+            if s[i] == s[len(s) - 1 - i]:
+                continue 
+            else:
+                return False
+        
+        return True
+```
+
+
+
 - 思路：O(1) 空间复杂度的解法需要破坏原链表（找中点 -> 反转后半个list -> 判断回文），在实际应用中往往还需要复原（后半个list再反转一次后拼接），操作比较复杂，这里给出更工程化的做法
 
 ```Python
