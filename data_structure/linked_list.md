@@ -553,35 +553,32 @@ class Solution:
 > 给定一个链表，每个节点包含一个额外增加的随机指针，该指针可以指向链表中的任何节点或空节点。
 > 要求返回这个链表的 深拷贝。
 
-- 思路1：hash table 存储 random 指针的连接关系
+- 思路1：dictionary 存储 random 指针的连接关系
 
 ```Python
 class Solution:
-    def copyRandomList(self, head: 'Node') -> 'Node':
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        if not head: return head
+        # save head node
+        cur = head
         
-        if head is None:
-            return None
+        node_dic = dict()
         
-        parent = collections.defaultdict(list)
+        while cur:
+            node_dic[cur] = Node(cur.val)
+            cur = cur.next
         
-        out = Node(0)
-        o, n = head, out
-        while o is not None:
-            n.next = Node(o.val)
-            n = n.next
-            if o.random is not None:
-                parent[o.random].append(n)
-            o = o.next
+        cur = head
+        
+        while cur:
+            if cur.next:
+                node_dic[cur].next = node_dic[cur.next]
+            if cur.random:
+                node_dic[cur].random = node_dic[cur.random]
             
-        o, n = head, out.next
-        while o is not None:
-            if o in parent:
-                for p in parent[o]:
-                    p.random = n
-            o = o.next
-            n = n.next
+            cur = cur.next
         
-        return out.next
+        return node_dic[head]
 ```
 
 - 思路2：复制结点跟在原结点后面，间接维护连接关系，优化空间复杂度，建立好新 list 的 random 链接后分离
@@ -675,5 +672,5 @@ second = [4, 5]
 - [x] [reorder-list](https://leetcode-cn.com/problems/reorder-list/)
 - [x] [linked-list-cycle](https://leetcode-cn.com/problems/linked-list-cycle/)
 - [x] [linked-list-cycle-ii](https://leetcode-cn.com/problems/https://leetcode-cn.com/problems/linked-list-cycle-ii/)
-- [ ] [palindrome-linked-list](https://leetcode-cn.com/problems/palindrome-linked-list/)
-- [ ] [copy-list-with-random-pointer](https://leetcode-cn.com/problems/copy-list-with-random-pointer/)
+- [x] [palindrome-linked-list](https://leetcode-cn.com/problems/palindrome-linked-list/)
+- [x] [copy-list-with-random-pointer](https://leetcode-cn.com/problems/copy-list-with-random-pointer/)
