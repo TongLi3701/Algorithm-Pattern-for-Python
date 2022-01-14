@@ -85,30 +85,26 @@ class Solution:
 > s = "3[a2[c]]", 返回 "accaccacc".
 > s = "2[abc]3[cd]ef", 返回 "abcabccdcdcdef".
 
-- 思路：通过两个栈进行操作，一个用于存数，另一个用来存字符串
+- 思路：通过栈来保存 `'['` 之前的数据
 
 ```Python
 class Solution:
     def decodeString(self, s: str) -> str:
+        stack, res, mul = [], "", 0
         
-        stack_str = ['']
-        stack_num = []
-        
-        num = 0
         for c in s:
-            if c >= '0' and c <= '9':
-                num = num * 10 + int(c)
-            elif c == '[':
-                stack_num.append(num)
-                stack_str.append('')
-                num = 0
-            elif c == ']':
-                cur_str = stack_str.pop()
-                stack_str[-1] += cur_str * stack_num.pop()
+            if c == "[":
+                stack.append([res, mul])
+                res, mul = "", 0
+            elif c == "]":
+                last_res, cur_mul = stack.pop()
+                res = last_res + cur_mul * res
+            elif c <= '9' and c >= '0':
+                mul = mul * 10 + int(c)
             else:
-                stack_str[-1] += c
+                res += c
         
-        return stack_str[0]
+        return res
 ```
 
 ### [binary-tree-inorder-traversal](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
