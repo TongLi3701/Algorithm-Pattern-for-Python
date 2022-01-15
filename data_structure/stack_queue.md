@@ -111,6 +111,25 @@ class Solution:
 
 > 给定一个二叉树，返回它的*中序*遍历。
 
+方法1: recursion
+
+```Python
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        
+        def inorder(cur):
+            if not cur: return 
+            
+            inorder(cur.left)
+            res.append(cur.val)
+            inorder(cur.right)
+        
+        inorder(root)
+        
+        return res
+```
+
 - [reference](https://en.wikipedia.org/wiki/Tree_traversal#In-order)
 
 ```Python
