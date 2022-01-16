@@ -179,34 +179,28 @@ class Solution:
         return visited[start]
 ```
 
-- DFS iterative
+- DFS
 
 ```Python
 class Solution:
-    def cloneGraph(self, start: 'Node') -> 'Node':
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        lookup = {}
         
-        if start is None:
-            return None
+        def dfs(node):
+            if not node: return 
+            
+            if node in lookup:
+                return lookup[node]
+            
+            clone_node = Node(node.val, [])
+            lookup[node] = clone_node
+            
+            for n in node.neighbors:
+                clone_node.neighbors.append(dfs(n))
+            
+            return clone_node
         
-        if not start.neighbors:
-            return Node(start.val)
-        
-        visited = {start: Node(start.val, [])}
-        dfs = [start]
-        
-        while len(dfs) > 0:
-            peek = dfs[-1]
-            peek_copy = visited[peek]
-            if len(peek_copy.neighbors) == 0:
-                for n in peek.neighbors:
-                    if n not in visited:
-                        visited[n] = Node(n.val, [])
-                        dfs.append(n)
-                    peek_copy.neighbors.append(visited[n])
-            else:
-                dfs.pop()
-        
-        return visited[start]
+        return dfs(node)
 ```
 
 ### [number-of-islands](https://leetcode-cn.com/problems/number-of-islands/)
