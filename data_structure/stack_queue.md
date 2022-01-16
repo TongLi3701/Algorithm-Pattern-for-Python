@@ -130,13 +130,13 @@ class Solution:
         return res
 ```
 
-方法2: 利用2个stack来实现inorder. [Reference](https://en.wikipedia.org/wiki/Tree_traversal#In-order) from wikipedia.
+方法2: 利用1个stack来实现inorder. [Reference](https://en.wikipedia.org/wiki/Tree_traversal#In-order) from wikipedia.
 
 ```Python
 class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         
-        stack, inorder = [], []
+        stack, res = [], []
         node = root
  
         while len(stack) > 0 or node is not None:
@@ -145,10 +145,10 @@ class Solution:
                 node = node.left
             else:
                 node = stack.pop()
-                inorder.append(node.val)
+                res.append(node.val)
                 node = node.right
         
-        return inorder
+        return res
 ```
 
 ### [clone-graph](https://leetcode-cn.com/problems/clone-graph/)
