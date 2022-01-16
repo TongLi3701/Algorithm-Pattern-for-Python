@@ -167,14 +167,14 @@ class Solution:
             clone_node = Node(node.val, [])
             lookup[node] = clone_node
             queue = deque()
-            queue.appendleft(node)
+            queue.append(node)
             
             while queue:
                 cur = queue.popleft()
                 for n in cur.neighbors:
                     if n not in lookup:
                         lookup[n] = Node(n.val, [])
-                        queue.appendleft(n)
+                        queue.append(n)
                     lookup[cur].neighbors.append(lookup[n])
             return clone_node
         
