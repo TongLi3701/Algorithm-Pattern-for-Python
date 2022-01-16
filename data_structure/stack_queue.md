@@ -214,39 +214,23 @@ High-level problem: number of connected component of graph
 - 思路：通过深度搜索遍历可能性（注意标记已访问元素）
 
 ```Python
-class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
+        def dfs(grid, i, j):
+            if i < 0 or i >= len(grid) or j < 0 or j >= len(grid[0]) or grid[i][j] == "0": return
+            
+            grid[i][j] = "0"
+            dfs(grid, i - 1, j)
+            dfs(grid, i + 1, j)
+            dfs(grid, i, j -1)
+            dfs(grid, i, j + 1)
+        count = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == "1":
+                    dfs(grid, i, j)
+                    count += 1
         
-        if not grid or not grid[0]:
-            return 0
-        
-        m, n = len(grid), len(grid[0])
-
-        def dfs_iter(i, j):
-            dfs = []
-            dfs.append((i, j))
-            while len(dfs) > 0:
-                i, j = dfs.pop()
-                if grid[i][j] == '1':
-                    grid[i][j] = '0'
-                    if i - 1 >= 0:
-                        dfs.append((i - 1, j))
-                    if j - 1 >= 0:
-                        dfs.append((i, j - 1))
-                    if i + 1 < m:
-                        dfs.append((i + 1, j))
-                    if j + 1 < n:
-                        dfs.append((i, j + 1))
-            return
-        
-        num_island = 0
-        for i in range(m):
-            for j in range(n):
-                if grid[i][j] == '1':
-                    num_island += 1
-                    dfs_iter(i, j)
-        
-        return num_island
+        return count
 ```
 
 ### [largest-rectangle-in-histogram](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
@@ -596,12 +580,12 @@ class Solution:
 
 ## 练习
 
-- [ ] [min-stack](https://leetcode-cn.com/problems/min-stack/)
-- [ ] [evaluate-reverse-polish-notation](https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/)
-- [ ] [decode-string](https://leetcode-cn.com/problems/decode-string/)
-- [ ] [binary-tree-inorder-traversal](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
-- [ ] [clone-graph](https://leetcode-cn.com/problems/clone-graph/)
-- [ ] [number-of-islands](https://leetcode-cn.com/problems/number-of-islands/)
+- [x] [min-stack](https://leetcode-cn.com/problems/min-stack/)
+- [x] [evaluate-reverse-polish-notation](https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/)
+- [x] [decode-string](https://leetcode-cn.com/problems/decode-string/)
+- [x] [binary-tree-inorder-traversal](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
+- [x] [clone-graph](https://leetcode-cn.com/problems/clone-graph/)
+- [x] [number-of-islands](https://leetcode-cn.com/problems/number-of-islands/)
 - [ ] [largest-rectangle-in-histogram](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
 - [ ] [implement-queue-using-stacks](https://leetcode-cn.com/problems/implement-queue-using-stacks/)
 - [ ] [01-matrix](https://leetcode-cn.com/problems/01-matrix/)
