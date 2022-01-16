@@ -159,24 +159,26 @@ class Solution:
 
 ```Python
 class Solution:
-    def cloneGraph(self, start: 'Node') -> 'Node':
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        lookup = {}
+        def bfs(node):
+            if not node: return node
+            
+            clone_node = Node(node.val, [])
+            lookup[node] = clone_node
+            queue = deque()
+            queue.appendleft(node)
+            
+            while queue:
+                cur = queue.popleft()
+                for n in cur.neighbors:
+                    if n not in lookup:
+                        lookup[n] = Node(n.val, [])
+                        queue.appendleft(n)
+                    lookup[cur].neighbors.append(lookup[n])
+            return clone_node
         
-        if start is None:
-            return None
-        
-        visited = {start: Node(start.val, [])}
-        bfs = collections.deque([start])
-        
-        while len(bfs) > 0:
-            curr = bfs.popleft()
-            curr_copy = visited[curr]
-            for n in curr.neighbors:
-                if n not in visited:
-                    visited[n] = Node(n.val, [])
-                    bfs.append(n)
-                curr_copy.neighbors.append(visited[n])
-        
-        return visited[start]
+        return bfs(node)
 ```
 
 - DFS
