@@ -1,6 +1,11 @@
 # 深度优先搜索，广度优先搜索
 
+
+深度优先, 广度优先例图:
+![image](https://user-images.githubusercontent.com/52250342/149838245-6a729cdc-1366-488c-b35c-ca6ac435e5e6.png)
+
 ### 深度优先搜索模板
+
 
 - 先序，递归
 
