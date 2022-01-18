@@ -426,31 +426,31 @@ class Solution:
 ```Python
 class Solution:
     def updateMatrix(self, matrix: List[List[int]]) -> List[List[int]]:
-        
-        if len(matrix) == 0 or len(matrix[0]) == 0:
-            return matrix
-        
-        m, n = len(matrix), len(matrix[0])
-        dist = [[float('inf')] * n for _ in range(m)]
-        
-        bfs = collections.deque([])
-        for i in range(m):
-            for j in range(n):
+        M, N = len(matrix), len(matrix[0])
+        queue = collections.deque()
+        visited = [[0] * N for _ in range(M)]
+        res = [[0] * N for _ in range(M)]
+        for i in range(M):
+            for j in range(N):
                 if matrix[i][j] == 0:
-                    dist[i][j] = 0
-                    bfs.append((i, j))
-
-        neighbors = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        while len(bfs) > 0:
-            i, j = bfs.popleft()
-            for dn_i, dn_j in neighbors:
-                n_i, n_j = i + dn_i, j + dn_j
-                if n_i >= 0 and n_i < m and n_j >= 0 and n_j < n:
-                    if dist[n_i][n_j] > dist[i][j] + 1:
-                        dist[n_i][n_j] = dist[i][j] + 1
-                        bfs.append((n_i, n_j))
-        
-        return dist        
+                    queue.append((i, j))
+                    visited[i][j] = 1
+        dirs = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        step = 0
+        while queue:
+            size = len(queue)
+            for i in range(size):
+                x, y = queue.popleft()
+                if matrix[x][y] == 1:
+                    res[x][y] = step
+                for dx, dy in dirs:
+                    newx, newy = x + dx, y + dy
+                    if newx < 0 or newx >= M or newy < 0 or newy >= N or visited[newx][newy] == 1:
+                        continue
+                    queue.append((newx, newy))
+                    visited[newx][newy] = 1
+            step += 1
+        return res  
 ```
 
 - 思路 2: 2-pass DP，dist(i, j) = max{dist(i - 1, j), dist(i + 1, j), dist(i, j - 1), dist(i, j + 1)} + 1
@@ -609,4 +609,4 @@ class Solution:
 - [x] [number-of-islands](https://leetcode-cn.com/problems/number-of-islands/)
 - [ ] [largest-rectangle-in-histogram](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
 - [x] [implement-queue-using-stacks](https://leetcode-cn.com/problems/implement-queue-using-stacks/)
-- [ ] [01-matrix](https://leetcode-cn.com/problems/01-matrix/)
+- [x] [01-matrix](https://leetcode-cn.com/problems/01-matrix/)
