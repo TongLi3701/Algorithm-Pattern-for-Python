@@ -14,21 +14,18 @@
 class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):
-        self.K = k
-        self.min_heap = []
-        for num in nums:
-            if len(self.min_heap) < self.K:
-                heapq.heappush(self.min_heap, num)
-            elif num > self.min_heap[0]:
-                heapq.heappushpop(self.min_heap, num)
+        self.k = k
+        self.heap = nums
+        heapq.heapify(self.heap)
+        
+
 
     def add(self, val: int) -> int:
-        if len(self.min_heap) < self.K:
-            heapq.heappush(self.min_heap, val)
-        elif val > self.min_heap[0]:
-            heapq.heappushpop(self.min_heap, val)
-
-        return self.min_heap[0]
+        heapq.heappush(self.heap, val)
+        while len(self.heap) > self.k:
+            heapq.heappop(self.heap)
+        
+        return self.heap[0]
 ```
 
 ### [kth-smallest-element-in-a-sorted-matrix](https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/)
