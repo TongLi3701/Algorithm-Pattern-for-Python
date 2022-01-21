@@ -34,6 +34,8 @@ class KthLargest:
 
 - 此题使用 heap 来做并不是最优做法，相当于 N 个 sorted list 里找第 k 个最小，列有序的条件没有充分利用，但是却是比较容易想且比较通用的做法。
 
+不管是找最大还是最小, 都可以用`heapq`, 找第k个最大的, 那么维持一个小根堆, 最后取出小根堆的第一个. 如果是找最小的, 那么弹出的个数就是要找的第k个 
+
 ```Python
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
