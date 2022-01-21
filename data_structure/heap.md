@@ -37,24 +37,17 @@ class KthLargest:
 ```Python
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
+        heap = [(matrix[i][0], i, 0) for i in range(len(matrix))]
         
-        N = len(matrix)
+        heapq.heapify(heap)
         
-        min_heap = []
-        for i in range(min(k, N)): # 这里用了一点列有序的性质，第k个最小只可能在前k行中(k行以后的数至少大于了k个数)
-            min_heap.append((matrix[i][0], i, 0))
-        
-        heapq.heapify(min_heap)
-        
-        while k > 0:
-            num, r, c = heapq.heappop(min_heap)
+        for i in range(k-1):
+            num, x, y = heapq.heappop(heap)
             
-            if c < N - 1:
-                heapq.heappush(min_heap, (matrix[r][c + 1], r, c + 1))
-            
-            k -= 1
+            if y != len(matrix) - 1:
+                heapq.heappush(heap,(matrix[x][y + 1], x, y+1))
         
-        return num
+        return heapq.heappop(heap)[0]
 ```
 
 ### [find-k-pairs-with-smallest-sums](https://leetcode-cn.com/problems/find-k-pairs-with-smallest-sums/)
