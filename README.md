@@ -28,7 +28,7 @@
 - [二叉树](./data_structure/binary_tree.md)
 - [链表](./data_structure/linked_list.md) - **done**
 - [栈和队列](./data_structure/stack_queue.md) - **done, skip difficult problems**
-- [优先级队列 (堆)](./data_structure/heap.md) - **ing**
+- [优先级队列 (堆)](./data_structure/heap.md) - **done, skip difficult problems**
 - [并查集](./data_structure/union_find.md)
 - [二进制](./data_structure/binary_op.md)
 
