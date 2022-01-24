@@ -10,6 +10,90 @@
 
 其中，模板 1 和 3 是最常用的，几乎所有二分查找问题都可以用其中之一轻松实现。模板 2 更高级一些，用于解决某些类型的问题。详细的对比可以参考 Leetcode 上的文章：[二分搜索模板](https://leetcode-cn.com/explore/learn/card/binary-search/212/template-analysis/847/)。
 
+
+另外, 搜索模板:
+```Python
+    /**
+     * 找数组中第一个 >= 目标值的索引
+     * 没找到则返回数组长度值
+     * 思路:
+     *   大于等于都满足, 则不能取right值, 只能取与left相关的
+     *   由于可以最大值都没有 >= 目标值, 故left要在遍历过程中达到 left > right
+     *   故循环结束条件 left <= right
+     *   left要大于right, 则nums[mid] >= target时 right = mid - 1, 是right降到小于目标值的位置, 然后left跨过去
+     *   left 固定必须为 mid + 1
+     * 没找到则返回数组长度值
+     */
+    public static int searchGeTarget(int[] nums, int target){
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right){
+            int mid = (right - left) / 2 + left;
+            if (nums[mid] >= target){
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+
+    /**
+     * 找数组中第一个 > 目标值的索引
+     * 没找到则返回数组长度值
+     */
+    public static int searchGtTarget(int[] nums, int target){
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right){
+            int mid = (right - left) / 2 + left;
+            if (nums[mid] > target){
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+
+    /**
+     * 找数组第一个 <= 目标值的索引(4,4,4,4)的右边界
+     * 没有则返回-1
+     */
+    public static int searchLeTarget(int[] nums, int target){
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right){
+            int mid = (right - left) / 2 + left;
+            if (nums[mid] > target){
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return right;
+    }
+
+    /**
+     * 找数组第一个 < 目标值的索引(4,4,4,4,5)的右边界5
+     * 没有则返回-1
+     */
+    public static int searchLtTarget(int[] nums, int target){
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right){
+            int mid = (right - left) / 2 + left;
+            if (nums[mid] >= target){
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return right;
+    }
+```
+
+
 ### [binary-search](https://leetcode-cn.com/problems/binary-search/)
 
 > 给定一个  n  个元素有序的（升序）整型数组  nums 和一个目标值  target  ，写一个函数搜索  nums  中的 target，如果目标值存在返回下标，否则返回 -1。
@@ -392,9 +476,9 @@ class Solution:
 
 ## 练习题
 
-- [ ] [binary-search](https://leetcode-cn.com/problems/binary-search/)
-- [ ] [find-first-and-last-position-of-element-in-sorted-array](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
-- [ ] [search-insert-position](https://leetcode-cn.com/problems/search-insert-position/)
+- [x] [binary-search](https://leetcode-cn.com/problems/binary-search/)
+- [x] [find-first-and-last-position-of-element-in-sorted-array](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+- [x] [search-insert-position](https://leetcode-cn.com/problems/search-insert-position/)
 - [ ] [search-a-2d-matrix](https://leetcode-cn.com/problems/search-a-2d-matrix/)
 - [ ] [first-bad-version](https://leetcode-cn.com/problems/first-bad-version/)
 - [ ] [find-minimum-in-rotated-sorted-array](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
