@@ -84,6 +84,39 @@ class Solution:
 
 > 给定一个包含 n 个整数的排序数组，找出给定目标值 target 的起始和结束位置。如果目标值不在数组中，则返回`[-1, -1]`
 
+
+方法1: 使用模板1, 找到之后进行缩进
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        l, r = 0, len(nums) - 1
+        res = [-1, -1]
+        if target not in nums:
+            return res
+        
+        while l <= r:
+            mid = l + (r - l) // 2
+            
+            if nums[mid] == target:
+                if nums[l] < target:
+                    l += 1
+                elif nums[r] > target:
+                    r -= 1    
+            elif nums[mid] > target:
+                r = mid - 1
+            else:
+                l = mid + 1
+            
+            if nums[l] == nums[r]:
+                return [l, r]
+        
+        return res
+```
+
+
+
+
 - 思路：核心点就是找第一个 target 的索引，和最后一个 target 的索引，所以用两次二分搜索分别找第一次和最后一次的位置，下面是使用模板 3 的解法
 
 ```Python
