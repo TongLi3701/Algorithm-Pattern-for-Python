@@ -359,7 +359,8 @@ class Solution:
 
 ## 练习题
 
-- [ ] [search-for-range](https://www.lintcode.com/problem/search-for-a-range/description)
+- [ ] [binary-search](https://leetcode-cn.com/problems/binary-search/)
+- [ ] [find-first-and-last-position-of-element-in-sorted-array](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 - [ ] [search-insert-position](https://leetcode-cn.com/problems/search-insert-position/)
 - [ ] [search-a-2d-matrix](https://leetcode-cn.com/problems/search-a-2d-matrix/)
 - [ ] [first-bad-version](https://leetcode-cn.com/problems/first-bad-version/)
