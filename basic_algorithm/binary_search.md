@@ -301,6 +301,27 @@ class Solution:
 
 ### [search-a-2d-matrix](https://leetcode-cn.com/problems/search-a-2d-matrix/)
 
+方法1: 首先要确定target元素所在行, 可以简单的使用 target 与 每行最后一个元素进行比较
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        
+        for row in matrix:
+            if target <= row[-1]:
+                l, r = 0, len(row) - 1
+                
+                while l <= r:
+                    mid = l + (r - l) // 2
+                    if row[mid] == target:
+                        return True
+                    elif row[mid] < target:
+                        l = mid + 1
+                    else:
+                        r = mid - 1
+        return False
+```
+
 > 编写一个高效的算法来判断  m x n  矩阵中，是否存在一个目标值。该矩阵具有如下特性：
 >
 > 1. 每行中的整数从左到右按升序排列。
