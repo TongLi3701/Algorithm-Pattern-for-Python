@@ -366,6 +366,7 @@ class Solution:
 
 > 假设按照升序排序的数组在预先未知的某个点上进行了旋转，例如，数组 [0, 1, 2, 4, 5, 6, 7] 可能变为 [4, 5, 6, 7, 0, 1, 2]。请找出其中最小的元素。假设数组中无重复元素。
 
+
 - 使用二分搜索，当中间元素大于右侧元素时意味着拐点即最小元素在右侧，否则在左侧
 
 ```Python
@@ -383,6 +384,9 @@ class Solution:
         
         return nums[l]
 ```
+
+推荐讲解: https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/solution/er-fen-cha-zhao-wei-shi-yao-zuo-you-bu-dui-cheng-z/
+
 
 ### [find-minimum-in-rotated-sorted-array-ii](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)
 
