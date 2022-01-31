@@ -5,38 +5,42 @@
 ### 快速排序
 
 ```Python
-import random
+# quick_sort 代码实现
 
-def partition(nums, left, right):
-    if left >= right:
+def partition(arr: List[int], low: int, high: int):
+    pivot, j = arr[low], low
+    for i in range(low + 1, high + 1):
+        if arr[i] <= pivot:
+            j += 1
+            arr[j], arr[i] = arr[i], arr[j]
+    arr[low], arr[j] = arr[j], arr[low]
+    return j 
+
+def quick_sort_between(arr: List[int], low: int, high: int):
+    if high-low <= 1: # 递归结束条件
         return
 
-    pivot_idx = random.randint(left, right)
-    pivot = nums[pivot_idx]
-    
-    nums[right], nums[pivot_idx] = nums[pivot_idx], nums[right]
-            
-    partition_idx = left
-    for i in range(left, right):
-        if nums[i] < pivot:
-            nums[partition_idx], nums[i] = nums[i], nums[partition_idx]
-            partition_idx += 1
-            
-    nums[right], nums[partition_idx] = nums[partition_idx], nums[right]
+    m = partition(arr, low, high)  # arr[m] 作为划分标准
+    quick_sort_between(arr, low, m - 1)
+    quick_sort_between(arr, m + 1, high)
 
-    partition(nums, partition_idx + 1, right)
-    partition(nums, left, partition_idx - 1)
+def quick_sort(arr:List[int]):
+    """
+    快速排序(in-place)
+    :param arr: 待排序的List
+    :return: 快速排序是就地排序(in-place)
+    """
+    quick_sort_between(arr,0, len(arr) - 1)
 
-    return
 
-def quicksort(A):
-    partition(A, 0, len(A) - 1)
-    return A
-
+# 测试数据
 if __name__ == '__main__':
-    a = [7, 6, 8, 5, 2, 1, 3, 4, 0, 9, 10]
-    print(a)
-    print(quicksort(a))
+    import random
+    random.seed(54)
+    arr = [random.randint(0,100) for _ in range(10)]
+    print("原始数据：", arr)
+    quick_sort(arr)
+    print("快速排序结果：", arr)
 ```
 
 ### 归并排序
