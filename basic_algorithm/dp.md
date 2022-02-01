@@ -247,6 +247,7 @@ class Solution:
 > 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
 > 问总共有多少条不同的路径？
 
+方法1: 利用一维数组
 ```Python
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
@@ -261,6 +262,20 @@ class Solution:
                 dp[j] += dp[j - 1]
         
         return dp[-1]
+```
+
+方法2: 利用二维数组
+```python
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        dp = [[1] * n for _ in range(m)]
+        
+        for i in range(m):
+            for j in range(n):
+                if i > 0 and j > 0:
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        
+        return dp[-1][-1]
 ```
 
 ### [unique-paths-ii](https://leetcode-cn.com/problems/unique-paths-ii/)
