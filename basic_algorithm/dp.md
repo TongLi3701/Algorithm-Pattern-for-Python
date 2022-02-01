@@ -220,6 +220,27 @@ class Solution:
         return dp[-1]
 ```
 
+```python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        
+        for i in range(m):
+            for j in range(n):
+                if i == 0 and j == 0:
+                    continue
+                elif i == 0:
+                    grid[i][j] = grid[i][j] + grid[i][j-1]
+                elif j == 0:
+                    grid[i][j] = grid[i][j] + grid[i-1][j]
+                else:
+                    grid[i][j] = grid[i][j] + min(grid[i-1][j], grid[i][j-1])
+        
+        return grid[-1][-1]
+```
+
+
+
 ### [unique-paths](https://leetcode-cn.com/problems/unique-paths/)
 
 > 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
@@ -761,8 +782,8 @@ class Solution:
 
 Matrix DP (10%)
 
-- [ ] [triangle](https://leetcode-cn.com/problems/triangle/)
-- [ ] [minimum-path-sum](https://leetcode-cn.com/problems/minimum-path-sum/)
+- [x] [triangle](https://leetcode-cn.com/problems/triangle/)
+- [x] [minimum-path-sum](https://leetcode-cn.com/problems/minimum-path-sum/)
 - [ ] [unique-paths](https://leetcode-cn.com/problems/unique-paths/)
 - [ ] [unique-paths-ii](https://leetcode-cn.com/problems/unique-paths-ii/)
 
