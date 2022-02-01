@@ -287,21 +287,29 @@ class Solution:
 
 ```Python
 class Solution:
-    def uniquePathsWithObstacles(self, G: List[List[int]]) -> int:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        m, n = len(obstacleGrid), len(obstacleGrid[0])
         
-        m, n = len(G), len(G[0])
+        dp = [[0] * n for _ in range(m)]
         
-        dp = [1] if G[0][0] == 0 else [0]
-        for i in range(1, n):
-            new = dp[i-1] if G[0][i] == 0 else 0
-            dp.append(new)
+        for i in range(m):
+            if obstacleGrid[i][0] == 0:
+                dp[i][0] = 1
+            else:
+                break
+        
+        for j in range(n):
+            if obstacleGrid[0][j] == 0:
+                dp[0][j] = 1
+            else:
+                break
         
         for i in range(1, m):
-            dp[0] = 0 if G[i][0] == 1 else dp[0]
             for j in range(1, n):
-                dp[j] = dp[j-1] + dp[j] if G[i][j] == 0 else 0
+                if obstacleGrid[i][j] == 0:
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1]
         
-        return dp[-1]
+        return dp[-1][-1]
 ```
 
 ## 2、序列类型（40%）
