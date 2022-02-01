@@ -134,6 +134,35 @@ Function(x) {
 
 如题：[longest-consecutive-sequence](https://leetcode-cn.com/problems/longest-consecutive-sequence/)  位置可以交换，所以不用动态规划
 
+例题:
+[longest-consecutive-sequence](https://leetcode-cn.com/problems/longest-consecutive-sequence/)
+```python
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        num_dict = {}
+        max_len = 0
+        
+        for num in nums:
+            if num not in num_dict:
+                l = num_dict.get(num - 1, 0)
+                r = num_dict.get(num + 1, 0)
+                
+                cur_len = 1 + l + r
+                
+                if cur_len > max_len:
+                    max_len = cur_len
+                
+                num_dict[num] = cur_len
+                num_dict[num - l] = cur_len
+                num_dict[num + r] = cur_len
+        
+        return max_len
+```
+分析:
+1. 关于 key 和 value 的定义, key 指的就是 list 中的每一个元素, value的定义则比较重要, 指的是对应连续区域的长度. 比如 key = 5， value = 3，意味着对于5来说，有一个长度为3的连续区间，5属于这个区间(不要纠结5这个元素到底在该区间的哪个位置) 具体来说，这个连续区间可能是[4, 6], [3, 5], [5,7]都是满足定义的，具体看nums里有哪些元素. 
+2. 比较关键的判断就是 `if num not in num_dict`. 如果num 第一次出现, 那么对于 key = num -1 来说, 对应的value 只可能是区间 [num - value, num-1]的长度, 即num-1只能是 key = num-1对应区间的右端点值. 因为其他情况会与num第一次出现冲突. 同理对于key=num+1 来说, 对应的value 只能是区间[num+1, num+value]的长度, 就是区间的左端点值
+
+
 ## 四点要素
 
 1. **状态 State**
