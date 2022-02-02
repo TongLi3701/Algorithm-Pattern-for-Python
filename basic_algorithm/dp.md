@@ -337,6 +337,18 @@ class Solution:
 > 数组中的每个元素代表你在该位置可以跳跃的最大长度。
 > 判断你是否能够到达最后一个位置。
 
+- 一步一步跳
+```python
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        max_dist = 0
+        for i in range(len(nums)):
+            if i > max_dist: return False
+            max_dist = max(max_dist, i + nums[i])
+
+        return True
+```
+
 解法：直接DP无法得到O(n)的解，考虑间接DP
 
 - tail to head
