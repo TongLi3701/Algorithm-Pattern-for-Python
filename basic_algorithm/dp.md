@@ -842,10 +842,10 @@ Matrix DP (10%)
 Sequence (40%)
 
 - [x] [climbing-stairs](https://leetcode-cn.com/problems/climbing-stairs/)
-- [ ] [jump-game](https://leetcode-cn.com/problems/jump-game/)
-- [ ] [jump-game-ii](https://leetcode-cn.com/problems/jump-game-ii/)
+- [x] [jump-game](https://leetcode-cn.com/problems/jump-game/)
+- [x] [jump-game-ii](https://leetcode-cn.com/problems/jump-game-ii/)
 - [ ] [palindrome-partitioning-ii](https://leetcode-cn.com/problems/palindrome-partitioning-ii/)
-- [ ] [longest-increasing-subsequence](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
+- [x] [longest-increasing-subsequence](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
 - [ ] [word-break](https://leetcode-cn.com/problems/word-break/)
 
 Two Sequences DP (40%)
