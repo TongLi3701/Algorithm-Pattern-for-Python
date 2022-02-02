@@ -388,6 +388,23 @@ class Solution:
 ```Python
 class Solution:
     def jump(self, nums: List[int]) -> int:
+        max_pos = 0
+        end = 0
+        step = 0
+        
+        for i in range(len(nums) - 1): # 剔除最后一个位置
+            max_pos = max(max_pos, i + nums[i])
+            
+            if i == end:
+                end = max_pos
+                step += 1
+                
+        return step 
+```
+
+```Python
+class Solution:
+    def jump(self, nums: List[int]) -> int:
         
         cur_max = 0
         step_max = 0
