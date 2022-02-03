@@ -504,6 +504,25 @@ class Solution:
 
 > 给定一个**非空**字符串  *s*  和一个包含**非空**单词列表的字典  *wordDict*，判定  *s*  是否可以被空格拆分为一个或多个在字典中出现的单词。
 
+方法1:
+```python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        # 动态规划
+        n = len(s) 
+        dp = [False] * (n + 1)
+        dp[0] = True
+        
+        for i in range(n):
+            for j in range(i+1, n+1):
+                if dp[i] and s[i:j] in wordDict:
+                    dp[j] = True
+        
+        return dp[-1]
+```
+
+
+方法2:
 ```Python
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
@@ -846,7 +865,7 @@ Sequence (40%)
 - [x] [jump-game-ii](https://leetcode-cn.com/problems/jump-game-ii/)
 - [ ] [palindrome-partitioning-ii](https://leetcode-cn.com/problems/palindrome-partitioning-ii/)
 - [x] [longest-increasing-subsequence](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
-- [ ] [word-break](https://leetcode-cn.com/problems/word-break/)
+- [x] [word-break](https://leetcode-cn.com/problems/word-break/)
 
 Two Sequences DP (40%)
 
