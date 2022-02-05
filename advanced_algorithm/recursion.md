@@ -36,15 +36,14 @@ class Solution:
 ```Python
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
         
-        if head is not None and head.next is not None:
-            head_next_pair = self.swapPairs(head.next.next)
-            p = head.next
-            head.next = head_next_pair
-            p.next = head
-            head = p
-        
-        return head
+        new_head = head.next
+        head.next = self.swapPairs(new_head.next)
+        new_head.next = head
+
+        return new_head
 ```
 
 ### [unique-binary-search-trees-ii](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)
