@@ -74,6 +74,8 @@ class Solution:
         
         return generateTrees_rec(1, n) if n > 0 else []
 ```
+<img width="853" alt="image" src="https://user-images.githubusercontent.com/52250342/152661020-9e9e2f1f-3e8e-4d2f-9342-c144601dfe13.png">
+
 
 ## 递归 + 备忘录 (recursion with memorization, top-down DP)
 
