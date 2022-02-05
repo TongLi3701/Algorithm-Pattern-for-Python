@@ -104,8 +104,8 @@ class Solution:
 
 ## 练习
 
-- [ ] [reverse-string](https://leetcode-cn.com/problems/reverse-string/)
-- [ ] [swap-nodes-in-pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
-- [ ] [unique-binary-search-trees-ii](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)
-- [ ] [fibonacci-number](https://leetcode-cn.com/problems/fibonacci-number/)
+- [x] [reverse-string](https://leetcode-cn.com/problems/reverse-string/)
+- [x] [swap-nodes-in-pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
+- [x] [unique-binary-search-trees-ii](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)
+- [x] [fibonacci-number](https://leetcode-cn.com/problems/fibonacci-number/)
 
