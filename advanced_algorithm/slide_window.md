@@ -214,4 +214,4 @@ class Solution:
 - [x] [minimum-window-substring](https://leetcode-cn.com/problems/minimum-window-substring/)
 - [x] [permutation-in-string](https://leetcode-cn.com/problems/permutation-in-string/)
 - [ ] [find-all-anagrams-in-a-string](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
-- [ ] [longest-substring-without-repeating-characters](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
+- [x] [longest-substring-without-repeating-characters](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
