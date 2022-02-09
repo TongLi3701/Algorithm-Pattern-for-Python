@@ -11,25 +11,47 @@
 
 > 验证二叉搜索树
 
+方法1: 利用一个额外的pre来进行中序遍历
 ```Python
 class Solution:
+    def __init__(self) -> None:
+        self.pre = float("-inf")
     def isValidBST(self, root: TreeNode) -> bool:
-        
-        if root is None:
+        if not root:
             return True
         
-        s = [(root, float('-inf'), float('inf'))]
-        while len(s) > 0:
-            node, low, up = s.pop()
-            if node.left is not None:
-                if node.left.val <= low or node.left.val >= node.val:
-                    return False
-                s.append((node.left, low, node.val))
-            if node.right is not None:
-                if node.right.val <= node.val or node.right.val >= up:
-                    return False
-                s.append((node.right, node.val, up))
-        return True
+        if not self.isValidBST(root.left):
+            return False
+        
+        if root.val <= self.pre:
+            return False
+        
+        self.pre = root.val
+
+        return self.isValidBST(root.right)
+```
+
+方法2: 利用 upper and lower
+```
+class Solution:
+    def isValidBST(self, root: TreeNode) -> bool:
+        def helper(node, upper=float("inf"), lower=float("-inf")):
+            if not node:
+                return True
+            
+            val = node.val
+            if val >= upper or val <= lower:
+                return False
+            
+            if not helper(node.left, upper=val, lower=lower):
+                return False
+            
+            if not helper(node.right, upper=upper, lower=val):
+                return False
+            
+            return True
+        
+        return helper(root)
 ```
 
 ### [insert-into-a-binary-search-tree](https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/)
@@ -170,7 +192,7 @@ if __name__ == "__main__":
 
 ## 练习
 
-- [ ] [validate-binary-search-tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)
+- [x] [validate-binary-search-tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)
 - [ ] [insert-into-a-binary-search-tree](https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/)
 - [ ] [delete-node-in-a-bst](https://leetcode-cn.com/problems/delete-node-in-a-bst/)
 - [ ] [balanced-binary-tree](https://leetcode-cn.com/problems/balanced-binary-tree/)
