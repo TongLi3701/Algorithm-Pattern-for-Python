@@ -77,6 +77,32 @@ class Solution:
 
 > 给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的  key  对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。
 
+递归
+```python
+class Solution:
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        if not root:
+            return root
+        
+        if key > root.val:
+            root.right = self.deleteNode(root.right, key)
+        elif key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        else: # found the node
+            if not root.left: return root.right
+            elif not root.right: return root.left
+            elif root.left and root.right:
+                temp = root.right
+                while temp.left:  # found the left one
+                    temp = temp.left
+                temp.left = root.left 
+                root = root.right 
+
+        return root
+```
+
+
+
 ```Python
 class Solution:
     def deleteNode(self, root: TreeNode, key: int) -> TreeNode:
