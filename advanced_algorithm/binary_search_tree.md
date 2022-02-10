@@ -182,6 +182,23 @@ class Solution:
         return True
 ```
 
+递归的方法:
+```python
+class Solution:
+    def isBalanced(self, root: TreeNode) -> bool:
+        if not root: return True
+        
+        left = self.getHeight(root.left)
+        right = self.getHeight(root.right)
+    
+        return abs(left - right) < 2 and self.isBalanced(root.left) and self.isBalanced(root.right)
+    
+    def getHeight(self, root):
+        if not root: return 0
+        
+        return max(self.getHeight(root.left), self.getHeight(root.right)) + 1
+```
+
 ### [valid-bfs-of-bst](./bst_bfs.py)
 
 > 给定一个整数数组，求问此数组是不是一个 BST 的 BFS 顺序。
@@ -219,6 +236,6 @@ if __name__ == "__main__":
 ## 练习
 
 - [x] [validate-binary-search-tree](https://leetcode-cn.com/problems/validate-binary-search-tree/)
-- [ ] [insert-into-a-binary-search-tree](https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/)
-- [ ] [delete-node-in-a-bst](https://leetcode-cn.com/problems/delete-node-in-a-bst/)
-- [ ] [balanced-binary-tree](https://leetcode-cn.com/problems/balanced-binary-tree/)
+- [x] [insert-into-a-binary-search-tree](https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/)
+- [x] [delete-node-in-a-bst](https://leetcode-cn.com/problems/delete-node-in-a-bst/)
+- [x] [balanced-binary-tree](https://leetcode-cn.com/problems/balanced-binary-tree/)
