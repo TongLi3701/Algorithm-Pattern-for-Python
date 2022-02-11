@@ -28,31 +28,21 @@ func backtrack(选择列表,路径):
 
 遍历过程
 
-![image.png](https://img.fuiboom.com/img/backtrack.png)
-
 ```Python
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        
+        res = []
         n = len(nums)
-        result = []
-        
-        def backtrack(start, k, route=[]):
-            if len(route) == k:
-                result.append(route.copy())
-                return
-            
-            for i in range(start, n):
-                route.append(nums[i])
-                backtrack(i + 1, k)
-                route.pop()
 
-            return
+        def helper(i, temp):
+            res.append(temp)
+
+            for j in range(i, n):
+                helper(j + 1, temp + [nums[j]])
         
-        for k in range(n + 1):
-            backtrack(0, k)
-        
-        return result
+
+        helper(0, [])
+        return res       
 ```
 
 ### [subsets-ii](https://leetcode-cn.com/problems/subsets-ii/)
