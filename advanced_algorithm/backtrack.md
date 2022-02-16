@@ -144,32 +144,28 @@ class Solution:
 ```Python
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        
         nums = sorted(nums)
         n = len(nums)
-        result = []
-        
+        res = []
         in_route = [False] * n
-        
+
         def backtrack(route=[]):
-            
-            if len(route) == n:
-                result.append(route.copy())
+            if len(route) == n and route not in res:
+                res.append(route.copy())
                 return
             
-            last = None
             for i in range(n):
-                if not in_route[i] and nums[i] != last:
+                if not in_route[i]:
                     route.append(nums[i])
                     in_route[i] = True
                     backtrack()
-                    last = route.pop()
+                    route.pop()
                     in_route[i] = False
             
             return
         
         backtrack()
-        return result
+        return res
 ```
 
 ### [combination-sum](https://leetcode-cn.com/problems/combination-sum/)
@@ -317,10 +313,10 @@ class Solution:
 
 ## 练习
 
-- [ ] [subsets](https://leetcode-cn.com/problems/subsets/)
-- [ ] [subsets-ii](https://leetcode-cn.com/problems/subsets-ii/)
-- [ ] [permutations](https://leetcode-cn.com/problems/permutations/)
-- [ ] [permutations-ii](https://leetcode-cn.com/problems/permutations-ii/)
+- [x] [subsets](https://leetcode-cn.com/problems/subsets/)
+- [x] [subsets-ii](https://leetcode-cn.com/problems/subsets-ii/)
+- [x] [permutations](https://leetcode-cn.com/problems/permutations/)
+- [x] [permutations-ii](https://leetcode-cn.com/problems/permutations-ii/)
 
 - [ ] [combination-sum](https://leetcode-cn.com/problems/combination-sum/)
 - [ ] [letter-combinations-of-a-phone-number](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
