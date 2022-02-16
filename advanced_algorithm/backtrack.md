@@ -318,7 +318,7 @@ class Solution:
 - [x] [permutations](https://leetcode-cn.com/problems/permutations/)
 - [x] [permutations-ii](https://leetcode-cn.com/problems/permutations-ii/)
 
-- [ ] [combination-sum](https://leetcode-cn.com/problems/combination-sum/)
+- [x] [combination-sum](https://leetcode-cn.com/problems/combination-sum/)
 - [ ] [letter-combinations-of-a-phone-number](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
 - [ ] [palindrome-partitioning](https://leetcode-cn.com/problems/palindrome-partitioning/)
 - [ ] [restore-ip-addresses](https://leetcode-cn.com/problems/restore-ip-addresses/)
