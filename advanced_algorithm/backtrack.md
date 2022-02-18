@@ -6,16 +6,20 @@
 
 ## 模板
 
-```go
-result = []
-func backtrack(选择列表,路径):
-    if 满足结束条件:
-        result.add(路径)
+```python
+res = []
+path = []
+
+def backtrack(未探索区域, res, path):
+    if 未探索区域满足结束条件:
+        res.add(path) # 深度拷贝
         return
-    for 选择 in 选择列表:
-        做选择
-        backtrack(选择列表,路径)
-        撤销选择
+    for 选择 in 未探索区域当前可能的选择:
+        if 当前选择符合要求:
+            path.add(当前选择)
+            backtrack(新的未探索区域, res, path)
+            path.pop()
+
 ```
 
 核心就是从选择列表里做一个选择，然后一直递归往下搜索答案，如果遇到路径不通，就返回来撤销这次选择。
