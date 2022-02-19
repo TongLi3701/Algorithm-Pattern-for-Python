@@ -345,6 +345,6 @@ class Solution:
 - [x] [permutations-ii](https://leetcode-cn.com/problems/permutations-ii/)
 
 - [x] [combination-sum](https://leetcode-cn.com/problems/combination-sum/)
-- [ ] [letter-combinations-of-a-phone-number](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
-- [ ] [palindrome-partitioning](https://leetcode-cn.com/problems/palindrome-partitioning/)
-- [ ] [restore-ip-addresses](https://leetcode-cn.com/problems/restore-ip-addresses/)
+- [x] [letter-combinations-of-a-phone-number](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
+- [x] [palindrome-partitioning](https://leetcode-cn.com/problems/palindrome-partitioning/)
+- [x] [restore-ip-addresses](https://leetcode-cn.com/problems/restore-ip-addresses/)
