@@ -243,6 +243,28 @@ class Solution:
 
 ### [palindrome-partitioning](https://leetcode-cn.com/problems/palindrome-partitioning/)
 
+方法1: 由于path + `[s[:i]]` 会产生新的list, 所以不需要copy
+```Python
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        res = []
+        def isPalindrome(s):
+            return s == s[::-1]
+
+        def backtrack(s, path):
+            if not s:
+                res.append(path)
+                return 
+
+            for i in range(1, len(s) + 1):
+                if isPalindrome(s[:i]):
+                    backtrack(s[i:], path + [s[:i]])
+
+        backtrack(s, [])
+
+        return res
+```
+
 ```Python
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
