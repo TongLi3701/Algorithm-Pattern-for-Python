@@ -44,7 +44,7 @@
 - [递归思维](./advanced_algorithm/recursion.md) - **done**
 - [滑动窗口思想](./advanced_algorithm/slide_window.md) - **done**
 - [二叉搜索树](./advanced_algorithm/binary_search_tree.md) - **done**
-- [回溯法](./advanced_algorithm/backtrack.md)
+- [回溯法](./advanced_algorithm/backtrack.md) - **done**
 
 ## 心得体会
 
